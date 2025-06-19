@@ -5,10 +5,10 @@ using UnityEngine;
 public class ThirdPersonController : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float moveSpeed = 2f;
+    [SerializeField] float moveSpeed = 5f;
     [SerializeField] float gravity = 25f;
-    [SerializeField] float rotationSpeed = 10f;
-    [SerializeField] float speedSmoothTime = 0.1f;
+    [SerializeField] float rotationSpeed = 15f;
+    [SerializeField] float speedSmoothTime = 0.15f;
     [Space]
     [Header("References")]
     [SerializeField] private Transform mainCameraTransform;
