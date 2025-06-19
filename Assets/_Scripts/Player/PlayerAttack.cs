@@ -7,10 +7,11 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Damage Values")]
     [SerializeField] int softAttackDamage = 10;
-    [SerializeField] int heavyAttackDamage = 30;
+    [SerializeField] int heavyAttackDamage = 20;
 
     [Header("References")]
     [SerializeField] Animator animator;
+    [SerializeField] WeaponHitbox weaponHitboxOnHand;
 
     int currentComboStep = 0;
     float lastAttackTime;
@@ -70,10 +71,19 @@ public class PlayerAttack : MonoBehaviour
         currentComboStep = 0;
         canChainNextAttack = false;
     }
-
     void ApplyDamage(int amount)
     {
         // Implement dummy damage logic here later
         Debug.Log($"Dealt {amount} damage");
+    }
+    
+    private void OnAttackAnimationStarted()
+    {
+        int damageFromAttack = (currentComboStep < 3) ? softAttackDamage : heavyAttackDamage;
+        weaponHitboxOnHand.ActivateWeaponHitbox(damageFromAttack);
+    }
+    private void OnAttackAnimationFinished()
+    {
+        weaponHitboxOnHand.DisableWeaponHitbox();
     }
 }

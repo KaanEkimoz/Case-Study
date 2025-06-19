@@ -125,8 +125,8 @@ public class PlayerLockOnTarget : MonoBehaviour
 
     void CalculateYOffset(Transform target)
     {
-        CapsuleCollider col = target.GetComponent<CapsuleCollider>();
-        float trueHeight = col.height * target.localScale.y;
+        BoxCollider col = target.GetComponent<BoxCollider>();
+        float trueHeight = col.size.y * target.localScale.y;
         currentYOffset = trueHeight * 0.75f;
 
         if (flattenVerticalLook && currentYOffset > 1.6f && currentYOffset < 1.6f * 3f)
