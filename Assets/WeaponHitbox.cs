@@ -19,6 +19,7 @@ public class WeaponHitbox : MonoBehaviour
         if(other.TryGetComponent<IDamageable>(out IDamageable hitdamageable))
         {
             hitdamageable.TakeDamage(weaponBaseDamage + _additionalDamage);
+            
             OnHit?.Invoke();
             Debug.Log("Damageable HIT");
         }
@@ -26,15 +27,17 @@ public class WeaponHitbox : MonoBehaviour
     }
     public void ActivateWeaponHitbox(float extraDamageFromOtherSources)
     {
+        _alreadyHit.Clear();
         _additionalDamage = extraDamageFromOtherSources;
         boxCollider.enabled = true;
-        _alreadyHit.Clear();
+        
     }
     public void DisableWeaponHitbox()
     {
+        _alreadyHit.Clear();
         _additionalDamage = 0;
         boxCollider.enabled = false;
-        _alreadyHit.Clear();
+        
     }
 }
 

@@ -23,7 +23,11 @@ public class PlayerAttack : MonoBehaviour
             TryAttack();
 
         if (Time.time - lastAttackTime > comboResetTime)
+        {
             ResetCombo();
+            weaponHitboxOnHand.DisableWeaponHitbox();
+        }
+            
     }
 
     void TryAttack()
@@ -75,6 +79,6 @@ public class PlayerAttack : MonoBehaviour
     }
     private void OnAttackAnimationFinished()
     {
-        weaponHitboxOnHand.DisableWeaponHitbox();
+       // weaponHitboxOnHand.DisableWeaponHitbox();
     }
 }
