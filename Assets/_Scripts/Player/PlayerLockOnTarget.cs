@@ -89,6 +89,7 @@ public class PlayerLockOnTarget : MonoBehaviour
     {
         isLockedOn = false;
         lockOnTarget = null;
+        enemyTargetLocator.transform.position = transform.position;
         animator.SetLayerWeight(1, 0);
         lockOnCamera.GetComponent<CinemachineCamera>().LookAt = null;
         lockOnCamera.SetActive(false);

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6200691f1e5ef43299bf33e2e1fc1968
+timeCreated: 1432973274
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 38199
+  packageName: Viking Swords pack
+  packageVersion: 1.0
+  assetPath: Assets/Viking Swords/models/Materials/sword_material_clean.mat
+  uploadId: 66042

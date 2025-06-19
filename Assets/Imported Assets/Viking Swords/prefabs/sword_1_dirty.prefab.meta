@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e0ff1a56880ee4cb992c47ff2669cc58
+labels:
+- viking
+- medieval
+- sword
+- battle
+- weapon
+- melee
+- steel
+timeCreated: 1432981930
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 38199
+  packageName: Viking Swords pack
+  packageVersion: 1.0
+  assetPath: Assets/Viking Swords/prefabs/sword_1_dirty.prefab
+  uploadId: 66042

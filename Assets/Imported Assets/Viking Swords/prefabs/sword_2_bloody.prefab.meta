@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 2aed72c9afea142268e1cfca63766998
+labels:
+- viking
+- medieval
+- sword
+- battle
+- weapon
+- melee
+- steel
+timeCreated: 1432981919
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 38199
+  packageName: Viking Swords pack
+  packageVersion: 1.0
+  assetPath: Assets/Viking Swords/prefabs/sword_2_bloody.prefab
+  uploadId: 66042

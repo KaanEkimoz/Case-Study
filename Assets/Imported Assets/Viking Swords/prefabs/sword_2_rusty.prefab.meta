@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 03bb618a93a7647dda954abdfce646e8
+labels:
+- viking
+- medieval
+- sword
+- battle
+- weapon
+- melee
+- steel
+timeCreated: 1432981913
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 38199
+  packageName: Viking Swords pack
+  packageVersion: 1.0
+  assetPath: Assets/Viking Swords/prefabs/sword_2_rusty.prefab
+  uploadId: 66042

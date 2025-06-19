@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c913c47f2c6c743fd9762dc020dbf6e7
+timeCreated: 1432980873
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 38199
+  packageName: Viking Swords pack
+  packageVersion: 1.0
+  assetPath: Assets/Viking Swords/models/Materials/sword2_material_alternative.mat
+  uploadId: 66042

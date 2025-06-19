@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2630f03c65d2d4b0496bd24fa81ec55a
+timeCreated: 1432981176
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 38199
+  packageName: Viking Swords pack
+  packageVersion: 1.0
+  assetPath: Assets/Viking Swords/models/Materials/sword2_material_rusty.mat
+  uploadId: 66042

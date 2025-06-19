@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1d9ae2bf7da8b424ba58cce2499b03d7
+timeCreated: 1432972688
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 38199
+  packageName: Viking Swords pack
+  packageVersion: 1.0
+  assetPath: Assets/Viking Swords/models/Materials/sword_material_bloody.mat
+  uploadId: 66042
