@@ -41,7 +41,6 @@ public class PlayerAttack : MonoBehaviour
         canChainNextAttack = false;
 
         animator.SetTrigger("Attack1");
-        ApplyDamage(softAttackDamage);
         Invoke(nameof(EnableNextAttack), inputWindow);
     }
 
@@ -53,9 +52,6 @@ public class PlayerAttack : MonoBehaviour
 
         string trigger = "Attack" + currentComboStep;
         animator.SetTrigger(trigger);
-
-        int damage = (currentComboStep < 3) ? softAttackDamage : heavyAttackDamage;
-        ApplyDamage(damage);
 
         if (currentComboStep < 3)
             Invoke(nameof(EnableNextAttack), inputWindow);
@@ -70,11 +66,6 @@ public class PlayerAttack : MonoBehaviour
     {
         currentComboStep = 0;
         canChainNextAttack = false;
-    }
-    void ApplyDamage(int amount)
-    {
-        // Implement dummy damage logic here later
-        Debug.Log($"Dealt {amount} damage");
     }
     
     private void OnAttackAnimationStarted()
