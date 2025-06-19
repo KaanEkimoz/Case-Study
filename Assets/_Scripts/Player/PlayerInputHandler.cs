@@ -13,7 +13,10 @@ public class PlayerInputHandler : MonoBehaviour
     public bool AttackButtonReleased => _attackButtonReleasedThisFrame;
     public bool AttackButtonHeld => _attackButtonHeld;
     public bool SprintButtonHeld => _sprintButtonHeld;
-    public bool LockOnButtonPressed => _lockOnButtonPressed;
+    public bool LockOnButtonPressed => _lockOnButtonPressedThisFrame;
+    public bool LockOnButtonReleased => _lockOnButtonReleasedThisFrame;
+
+    public bool LockOnButtonHeld => _lockOnButtonHeld;
 
     public Vector2 MovementInput => _moveInput;
     public Vector2 MouseInput => _mouseInput;
@@ -21,10 +24,6 @@ public class PlayerInputHandler : MonoBehaviour
     // Movement - WASD Keyboard Buttons, Mouse Cursor
     private Vector2 _moveInput;
     private Vector2 _mouseInput;
-
-    // Dash - Space Keyboard Button
-    private bool _dashButtonHeld;
-    private bool _dashButtonPressedThisFrame;
 
     // Sprint - Left Shift
     private bool _sprintButtonHeld;
@@ -34,8 +33,10 @@ public class PlayerInputHandler : MonoBehaviour
     private bool _attackButtonReleasedThisFrame;
     private bool _attackButtonHeld;
 
-    // Lock On Target- TAB Keyboard Button
-    private bool _lockOnButtonPressed;
+    // Lock On Target - TAB Keyboard Button
+    private bool _lockOnButtonPressedThisFrame;
+    private bool _lockOnButtonReleasedThisFrame;
+    private bool _lockOnButtonHeld;
 
     [Header("Movement Settings")]
     public bool analogMovement;
@@ -48,7 +49,8 @@ public class PlayerInputHandler : MonoBehaviour
     {
         _attackButtonPressedThisFrame = false;
         _attackButtonReleasedThisFrame = false;
-        _dashButtonPressedThisFrame = false;
+        _lockOnButtonPressedThisFrame = false;
+        _lockOnButtonReleasedThisFrame = false;
     }
 
     #region Mouse Cursor
@@ -90,16 +92,6 @@ public class PlayerInputHandler : MonoBehaviour
     {
         _mouseInput = context.ReadValue<Vector2>();
     }
-    public void OnDash(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            _dashButtonPressedThisFrame = true;
-            _dashButtonHeld = true;
-        }
-        else if (context.canceled)
-            _dashButtonHeld = false;
-    }
     public void OnSprint(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -119,6 +111,19 @@ public class PlayerInputHandler : MonoBehaviour
         {
             _attackButtonHeld = false;
             _attackButtonReleasedThisFrame = true;
+        }
+    }
+    public void OnLockOn(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _lockOnButtonHeld = true;
+            _lockOnButtonPressedThisFrame = true;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            _lockOnButtonHeld = false;
+            _lockOnButtonReleasedThisFrame = true;
         }
     }
     #endregion

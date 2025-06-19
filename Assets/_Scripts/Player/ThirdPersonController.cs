@@ -50,10 +50,7 @@ public class ThirdPersonController : MonoBehaviour
 
     void ReadInput()
     {
-        inputMove.x = Input.GetAxis("Horizontal");
-        inputMove.y = Input.GetAxis("Vertical");
-
-        moveDirection = GetCameraRelativeDirection(inputMove).normalized;
+        moveDirection = GetCameraRelativeDirection(PlayerInputHandler.Instance.MovementInput).normalized;
     }
 
     Vector3 GetCameraRelativeDirection(Vector2 input)
