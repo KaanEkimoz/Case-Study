@@ -19,8 +19,7 @@ public class ThirdPersonController : MonoBehaviour
     private float _currentSpeed;
     private float _speedSmoothVelocity;
 
-    private Vector2 inputMove;
-    Vector3 moveDirection;
+    private Vector3 moveDirection;
 
     public bool lockMovement;
 
@@ -53,7 +52,7 @@ public class ThirdPersonController : MonoBehaviour
         moveDirection = GetCameraRelativeDirection(PlayerInputHandler.Instance.MovementInput).normalized;
     }
 
-    Vector3 GetCameraRelativeDirection(Vector2 input)
+    Vector3 GetCameraRelativeDirection(Vector2 movementInput)
     {
         Vector3 forward = mainCameraTransform.forward;
         Vector3 right = mainCameraTransform.right;
@@ -61,7 +60,7 @@ public class ThirdPersonController : MonoBehaviour
         forward.y = 0;
         right.y = 0;
 
-        return forward.normalized * input.y + right.normalized * input.x;
+        return forward.normalized * movementInput.y + right.normalized * movementInput.x;
     }
     void CalculateMovement()
     {
@@ -88,7 +87,7 @@ public class ThirdPersonController : MonoBehaviour
     void UpdateAnimator()
     {
         animator.SetFloat("Movement", moveDirection.magnitude, 0.1f, Time.deltaTime);
-        animator.SetFloat("Horizontal", inputMove.x, 0.1f, Time.deltaTime);
-        animator.SetFloat("Vertical", inputMove.y, 0.1f, Time.deltaTime);
+        animator.SetFloat("XAxis", moveDirection.x, 0.1f, Time.deltaTime);
+        animator.SetFloat("ZAxis", moveDirection.z, 0.1f, Time.deltaTime);
     }
 }

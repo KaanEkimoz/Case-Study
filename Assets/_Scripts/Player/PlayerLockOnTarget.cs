@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -80,6 +81,7 @@ public class PlayerLockOnTarget : MonoBehaviour
         isLockedOn = true;
         animator.SetLayerWeight(1, 1);
         lockOnCamera.SetActive(true);
+        lockOnCamera.GetComponent<CinemachineCamera>().LookAt = lockOnTarget;
         lockOnCanvas.gameObject.SetActive(true);
     }
 
@@ -88,6 +90,7 @@ public class PlayerLockOnTarget : MonoBehaviour
         isLockedOn = false;
         lockOnTarget = null;
         animator.SetLayerWeight(1, 0);
+        lockOnCamera.GetComponent<CinemachineCamera>().LookAt = null;
         lockOnCamera.SetActive(false);
         lockOnCanvas.gameObject.SetActive(false);
     }
