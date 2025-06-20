@@ -90,4 +90,8 @@ public class ThirdPersonController : MonoBehaviour
         animator.SetFloat("XAxis", moveDirection.x, 0.1f, Time.deltaTime);
         animator.SetFloat("ZAxis", moveDirection.z, 0.1f, Time.deltaTime);
     }
+    public void OnStepAnimationEvent()
+    {
+        SoundFXManager.Instance.PlayRandomSoundFXAtPosition(SoundFXManager.Instance.playerWalkOnConcreteSounds, transform, 0.15f);
+    }
 }
