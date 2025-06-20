@@ -1,4 +1,4 @@
-# case-study
+# Case Study
 
 Case Study
 
