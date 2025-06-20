@@ -1,8 +1,12 @@
 # Case Study
 
-Case Study
-
 SETUP: Download "WINDOWS BUILD.ZIP" file in repo and extract it to a folder then run the exe.
+
+Note: The lock-on system currently targets the dummy in the direction the player is facing, rather than the closest enemy. I chose this approach intentionally for better game feel, as locking onto an unseen enemy nearby felt like a poor design choice. Prioritizing what the player is actually looking at creates a more intuitive and satisfying experience.
+
+Controls
+WASD Keys for movement
+TAB Key to Lock On Target
 
 # Step-by-Step: What I Did
 
