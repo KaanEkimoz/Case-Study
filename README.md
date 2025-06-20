@@ -2,7 +2,7 @@
 
 Case Study
 
-SETUP: DOWNLOAD "WINDOWS BUILD.ZIP" file in repo and extract it to a folder then run the exe.
+SETUP: Download "WINDOWS BUILD.ZIP" file in repo and extract it to a folder then run the exe.
 
 # Step-by-Step: What I Did
 
