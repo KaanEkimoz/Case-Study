@@ -1,4 +1,5 @@
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -9,6 +10,7 @@ public class PlayerLockOnTarget : MonoBehaviour
     [Header("References")]
     [SerializeField] LayerMask targetLayers;
     [SerializeField] Transform lockOnCanvas;
+    [SerializeField] float verticalOffset = 0.5f;
     [SerializeField] Transform enemyTargetLocator;
     //[SerializeField] Animator cinemachineAnimator;
     [SerializeField] GameObject lockOnCamera;
@@ -62,7 +64,7 @@ public class PlayerLockOnTarget : MonoBehaviour
         }
     }
 
-    void ToggleLockOn()
+    public void ToggleLockOn()
     {
         if (lockOnTarget != null)
         {
@@ -160,7 +162,7 @@ public class PlayerLockOnTarget : MonoBehaviour
             return;
         }
 
-        cachedTargetPosition = lockOnTarget.position + Vector3.up * currentYOffset;
+        cachedTargetPosition = lockOnTarget.position + Vector3.up * (currentYOffset + verticalOffset);
 
         lockOnCanvas.position = cachedTargetPosition;
         lockOnCanvas.localScale = Vector3.one * Vector3.Distance(mainCamera.position, cachedTargetPosition) * crosshairScaleMultiplier;
@@ -175,6 +177,11 @@ public class PlayerLockOnTarget : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * smoothing);
         }
+    }
+    public void ClearLockOnTargetKiLLED(Combatant dummy)
+    {
+        if (lockOnTarget != null && dummy.transform == lockOnTarget)
+            ToggleLockOn();
     }
 
     void OnDrawGizmos()

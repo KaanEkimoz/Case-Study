@@ -3,24 +3,21 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] Combatant target;
-    [SerializeField] Image fillImage;
-    //[SerializeField] Vector3 offset = Vector3.up * 2f;
+    [SerializeField] private Combatant target;
+    [SerializeField] private Image fillImage;
 
-    Camera mainCam;
+    private Camera _mainCam;
 
     private void Start()
     {
-        mainCam = Camera.main;
+        _mainCam = Camera.main;
+        fillImage.fillAmount = 1;
     }
-
-    void Update()
+    public void UpdateHealthBar()
     {
         if (target == null || fillImage == null) return;
 
         float normalizedHealth = target.Health / target.MaxHealth;
         fillImage.fillAmount = normalizedHealth;
-
-        //transform.position = target.transform.position + offset;
     }
 }

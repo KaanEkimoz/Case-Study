@@ -4,7 +4,7 @@ public class Combatant : MonoBehaviour, IDamageable
 {
     [Header("Stats")]
     [SerializeField] float maxHealth = 100f;
-    [SerializeField] float respawnDelay = 5f;
+    [SerializeField] float respawnDelayInSeconds = 5f;
 
     [Header("References")]
     [SerializeField] Animator animator;
@@ -16,6 +16,8 @@ public class Combatant : MonoBehaviour, IDamageable
     public bool IsAlive => isAlive;
     public float Health => currentHealth;
     public float MaxHealth => maxHealth;
+
+    public float RespawnDelayInSeconds => respawnDelayInSeconds;
 
     public UnityEvent OnTakeDamage;
     public UnityEvent OnDie;
@@ -45,6 +47,8 @@ public class Combatant : MonoBehaviour, IDamageable
         currentHealth -= damage;
         animator.SetTrigger("Hit");
 
+        OnTakeDamage?.Invoke();
+
         if (currentHealth <= 0f)
             Die();
     }
@@ -67,7 +71,7 @@ public class Combatant : MonoBehaviour, IDamageable
         OnDie?.Invoke();
         // Disable hitbox or collisions here if needed
 
-        Invoke(nameof(Respawn), respawnDelay);
+        Invoke(nameof(Respawn), respawnDelayInSeconds);
     }
 
     void Respawn()
