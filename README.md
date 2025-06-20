@@ -1,12 +1,18 @@
 # Case Study
 
-SETUP: Download "WINDOWS BUILD.ZIP" file in repo and extract it to a folder then run the exe.
+SETUP: Download the file named "WINDOWS BUILD.zip" from the repository, extract the ZIP file to a folder of your choice and run the .exe file inside to start the application
+
+To do this, locate the file in the repo, click on it to open its preview page. Then, in the top-right corner of that page, click the three-dot menu ( ⋮ ) and select Download. 
+After downloading, extract the ZIP file to a folder of your choice and run the .exe file inside to start the application.
+
+---------------------------------------------------------------------------------
 
 Note: The lock-on system currently targets the dummy in the direction the player is facing, rather than the closest enemy. I chose this approach intentionally for better game feel, as locking onto an unseen enemy nearby felt like a poor design choice. Prioritizing what the player is actually looking at creates a more intuitive and satisfying experience.
 
 Controls
-WASD Keys for movement
-TAB Key to Lock On Target
+"WASD" Keys for movement
+"TAB" Key to Lock On Target
+"MOUSE LEFT" Button to Attack, can be clicked rapidly
 
 # Step-by-Step: What I Did
 
