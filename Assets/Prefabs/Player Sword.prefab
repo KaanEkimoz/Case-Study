@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7786091815621015106}
   - component: {fileID: 5219434616307749796}
   - component: {fileID: 2580510264879029533}
+  - component: {fileID: 250755292257243856}
   - component: {fileID: 4065289098644327084}
   m_Layer: 0
   m_Name: Player Sword
@@ -125,11 +126,64 @@ MonoBehaviour:
   weaponBaseDamage: 10
   targetMask:
     serializedVersion: 2
-    m_Bits: 0
-  boxCollider: {fileID: 0}
+    m_Bits: 64
+  boxCollider: {fileID: 5219434616307749796}
   OnHit:
     m_PersistentCalls:
       m_Calls: []
+  OnActivated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 250755292257243856}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnDeactivated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 250755292257243856}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &250755292257243856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673671240610023177}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff4f5a8991d7fa47baed5c5ff25979f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: ae721c767fcd6664ca1cf46b36bb56b7, type: 2}
+  duration: 0.5
+  corner: 1
+  loop: 0
+  points:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0.15, z: 0}
+  - {x: 0, y: 0.3, z: 0}
+  - {x: 0, y: 0.45, z: 0}
+  - {x: 0, y: 0.6, z: 0}
+  - {x: 0, y: 0.75, z: 0}
 --- !u!96 &4065289098644327084
 TrailRenderer:
   serializedVersion: 3
@@ -138,7 +192,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673671240610023177}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
