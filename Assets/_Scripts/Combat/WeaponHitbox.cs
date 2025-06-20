@@ -9,6 +9,7 @@ public class WeaponHitbox : MonoBehaviour
     [SerializeField] private LayerMask targetMask;
     [SerializeField] private BoxCollider boxCollider;
     [SerializeField] private Trail trail;
+    [SerializeField] private GameObject hitParticle;
 
     private float _additionalDamage;
     private List<Collider> _alreadyHit = new();
@@ -23,7 +24,8 @@ public class WeaponHitbox : MonoBehaviour
         if(other.TryGetComponent<IDamageable>(out IDamageable hitdamageable))
         {
             hitdamageable.TakeDamage(weaponBaseDamage + _additionalDamage);
-            
+
+            Instantiate(hitParticle, other.ClosestPoint(transform.position), Quaternion.identity);
             OnHit?.Invoke();
             SoundFXManager.Instance.PlayRandomSoundFXAtPosition(SoundFXManager.Instance.swordHitSounds, transform, 0.15f);
             Debug.Log("Damageable HIT");
