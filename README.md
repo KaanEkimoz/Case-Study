@@ -37,5 +37,5 @@ TAB Key to Lock On Target
 
 -For strafing movement, I heavily used animation layers and blends, but since the underlying logic was simple, I was able to implement it quickly.
 
--Due to limited time, I couldn’t focus enough on refactoring my code and organize the folders, but I kept everything as clean and organized as possible.
+-Due to limited time, I couldn’t focus enough on refactoring my code and organizing the folders, but I kept everything as clean and structured as possible. Instead, I prioritized polishing the game feel and completing a functional build.
 
