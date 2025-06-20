@@ -4,7 +4,7 @@ Case Study
 
 SETUP: DOWNLOAD "WINDOWS BUILD.ZIP" file in repo and extract it to a folder then run the exe.
 
-#Step-by-Step: What I Did
+# Step-by-Step: What I Did
 
 -I created a structured implementation plan, closely following the order described in the assignment document.
 
@@ -23,7 +23,7 @@ SETUP: DOWNLOAD "WINDOWS BUILD.ZIP" file in repo and extract it to a folder then
 
 -Lastly, I spent extra time refining the combat system and improving the overall game feel through camera shakes, hit reactions, and animation timing.
 
-#Faced Challenges and Solutions
+# Faced Challenges and Solutions
 
 -First of all, Mixamo was down for more than a day during the case study period, so initially I couldn't find the necessary animations. As a result, I searched through many projects to find and implement useful animations.
 
