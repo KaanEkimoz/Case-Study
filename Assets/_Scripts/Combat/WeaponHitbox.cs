@@ -27,7 +27,7 @@ public class WeaponHitbox : MonoBehaviour
 
             Instantiate(hitParticle, other.ClosestPoint(transform.position), Quaternion.identity);
             OnHit?.Invoke();
-            SoundFXManager.Instance.PlayRandomSoundFXAtPosition(SoundFXManager.Instance.swordHitSounds, transform, 0.15f);
+            SoundFXManager.Instance.PlayRandomSoundFXAtPosition(SoundFXManager.Instance.swordHitSounds, transform, 0.1f);
             Debug.Log("Damageable HIT");
         }
         _alreadyHit.Add(other);
@@ -37,7 +37,15 @@ public class WeaponHitbox : MonoBehaviour
         _alreadyHit.Clear();
         _additionalDamage = extraDamageFromOtherSources;
         boxCollider.enabled = true;
+
+        if (isHeavyAttack)
+            SetTrailMaterialColor(Color.red);
+
         OnActivated?.Invoke();
+    }
+    public void SetTrailMaterialColor(Color color)
+    {
+        trail.SetMaterialColor(color);
     }
     public void DisableWeaponHitbox()
     {

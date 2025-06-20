@@ -8,6 +8,6 @@ public class Dummy : MonoBehaviour
     }
     public void OnDummyDamagedAnimationEvent()
     {
-        SoundFXManager.Instance.PlayRandomSoundFXAtPosition(SoundFXManager.Instance.dummyDamagedSounds, transform, 0.15f);
+        SoundFXManager.Instance.PlayRandomSoundFXAtPosition(SoundFXManager.Instance.dummyDamagedSounds, transform, 0.3f);
     }
 }

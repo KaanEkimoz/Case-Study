@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
@@ -13,12 +14,25 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] WeaponHitbox weaponHitboxOnHand;
 
+    [Header("Attack Motion")]
+    [SerializeField] float attackForwardDistance = 0.5f;
+    [SerializeField] float attackForwardDuration = 0.1f;
+    [SerializeField] Ease attackForwardEase = Ease.OutQuad;
+
+    [Header("Obstacle Detect")]
+    [SerializeField] float obstacleCheckDistance = 1f;
+    [SerializeField] LayerMask obstacleLayer;
+
+
     int currentComboStep = 0;
     float lastAttackTime;
     bool canChainNextAttack;
+    ThirdPersonController thirdPersonController;
 
     void Update()
     {
+        thirdPersonController = GetComponent<ThirdPersonController>();
+
         if (PlayerInputHandler.Instance.AttackButtonPressed)
             TryAttack();
 
@@ -72,14 +86,34 @@ public class PlayerAttack : MonoBehaviour
         canChainNextAttack = false;
     }
     
-    private void OnAttackAnimationStarted()
+    public void OnAttackAnimationStarted()
     {
         int damageFromAttack = (currentComboStep < 3) ? softAttackDamage : heavyAttackDamage;
-        weaponHitboxOnHand.ActivateWeaponHitbox(damageFromAttack);
-        SoundFXManager.Instance.PlayRandomSoundFXAtPosition(SoundFXManager.Instance.swordSwingSounds,transform,0.15f);
+        weaponHitboxOnHand.ActivateWeaponHitbox(damageFromAttack,damageFromAttack == heavyAttackDamage);
+        SoundFXManager.Instance.PlayRandomSoundFXAtPosition(SoundFXManager.Instance.swordSwingSounds, transform, 0.15f);
+
+        if (!IsObstacleInFront())
+        {
+            Vector3 forwardDir = transform.forward * attackForwardDistance;
+            transform.DOMove(transform.position + forwardDir, attackForwardDuration)
+                     .SetEase(attackForwardEase);
+        }
+
+        thirdPersonController.movementSpeedMultiplierWhenAttacking = 0.3f;
+        thirdPersonController.canRotate = false;
     }
-    private void OnAttackAnimationFinished()
+    private bool IsObstacleInFront()
     {
-       // weaponHitboxOnHand.DisableWeaponHitbox();
+        Vector3 origin = transform.position + Vector3.up * 0.5f;
+        Vector3 direction = transform.forward;
+
+        return Physics.Raycast(origin, direction, obstacleCheckDistance, obstacleLayer);
+    }
+    public void OnAttackAnimationFinished()
+    {
+        weaponHitboxOnHand.SetTrailMaterialColor(Color.white);
+        thirdPersonController.movementSpeedMultiplierWhenAttacking = 1;
+        thirdPersonController.canRotate = true;
+        // weaponHitboxOnHand.DisableWeaponHitbox();
     }
 }

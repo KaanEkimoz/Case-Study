@@ -34,12 +34,6 @@ public class Combatant : MonoBehaviour, IDamageable
         if(boxCollider == null)
             boxCollider = GetComponent<BoxCollider>();
     }
-
-    private void Update()
-    {
-        // Optional: visual damage feedback (blink, flash)
-    }
-
     public void TakeDamage(float damage)
     {
         if (!isAlive) return;

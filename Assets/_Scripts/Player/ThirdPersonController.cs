@@ -19,10 +19,14 @@ public class ThirdPersonController : MonoBehaviour
     private float _velocityY;
     private float _currentSpeed;
     private float _speedSmoothVelocity;
+    public float movementSpeedMultiplierWhenAttacking = 1;
 
     private Vector3 moveDirection;
 
     public bool lockMovement;
+    public bool canRotate;
+
+    public bool canMove = true;
 
     void Awake()
     {
@@ -34,6 +38,9 @@ public class ThirdPersonController : MonoBehaviour
 
         if (mainCameraTransform == null && Camera.main != null)
             mainCameraTransform = Camera.main.transform;
+
+        canRotate = true;
+        movementSpeedMultiplierWhenAttacking = 1;
     }
 
     private void Update()
@@ -41,10 +48,12 @@ public class ThirdPersonController : MonoBehaviour
         ReadInput();
         CalculateMovement();
 
-        if (!lockMovement)
+        if (!lockMovement && canRotate)
             ApplyRotation();
 
         ApplyGravityAndMove();
+
+
         UpdateAnimator();
     }
 
@@ -65,7 +74,7 @@ public class ThirdPersonController : MonoBehaviour
     }
     void CalculateMovement()
     {
-        float targetSpeed = moveDirection.magnitude > 0 ? moveSpeed : 0;
+        float targetSpeed = moveDirection.magnitude > 0 ? moveSpeed * movementSpeedMultiplierWhenAttacking : 0;
         _currentSpeed = Mathf.SmoothDamp(_currentSpeed, targetSpeed, ref _speedSmoothVelocity, speedSmoothTime);
     }
     void ApplyGravityAndMove()
