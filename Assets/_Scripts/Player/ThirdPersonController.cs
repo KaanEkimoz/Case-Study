@@ -14,6 +14,7 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private Transform mainCameraTransform;
     [SerializeField] private CharacterController controller;
     [SerializeField] private Animator animator;
+    [SerializeField] private float movementDampingTime = 0.1f;
 
     private float _velocityY;
     private float _currentSpeed;
@@ -35,7 +36,7 @@ public class ThirdPersonController : MonoBehaviour
             mainCameraTransform = Camera.main.transform;
     }
 
-    void Update()
+    private void Update()
     {
         ReadInput();
         CalculateMovement();
@@ -47,9 +48,9 @@ public class ThirdPersonController : MonoBehaviour
         UpdateAnimator();
     }
 
-    void ReadInput()
+    private void ReadInput()
     {
-        moveDirection = GetCameraRelativeDirection(PlayerInputHandler.Instance.MovementInput).normalized;
+        moveDirection = GetCameraRelativeDirection(PlayerInputHandler.Instance.MovementInput);
     }
 
     Vector3 GetCameraRelativeDirection(Vector2 movementInput)
@@ -86,9 +87,9 @@ public class ThirdPersonController : MonoBehaviour
     }
     void UpdateAnimator()
     {
-        animator.SetFloat("Movement", moveDirection.magnitude, 0.1f, Time.deltaTime);
-        animator.SetFloat("XAxis", moveDirection.x, 0.1f, Time.deltaTime);
-        animator.SetFloat("ZAxis", moveDirection.z, 0.1f, Time.deltaTime);
+        animator.SetFloat("Movement", moveDirection.magnitude, movementDampingTime, Time.deltaTime);
+        animator.SetFloat("XAxis", moveDirection.x, movementDampingTime, Time.deltaTime);
+        animator.SetFloat("ZAxis", moveDirection.z, movementDampingTime, Time.deltaTime);
     }
     public void OnStepAnimationEvent()
     {

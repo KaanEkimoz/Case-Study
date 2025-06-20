@@ -25,6 +25,7 @@ public class WeaponHitbox : MonoBehaviour
             hitdamageable.TakeDamage(weaponBaseDamage + _additionalDamage);
             
             OnHit?.Invoke();
+            SoundFXManager.Instance.PlayRandomSoundFXAtPosition(SoundFXManager.Instance.swordHitSounds, transform, 0.15f);
             Debug.Log("Damageable HIT");
         }
         _alreadyHit.Add(other);

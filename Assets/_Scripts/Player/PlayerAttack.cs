@@ -76,6 +76,7 @@ public class PlayerAttack : MonoBehaviour
     {
         int damageFromAttack = (currentComboStep < 3) ? softAttackDamage : heavyAttackDamage;
         weaponHitboxOnHand.ActivateWeaponHitbox(damageFromAttack);
+        SoundFXManager.Instance.PlayRandomSoundFXAtPosition(SoundFXManager.Instance.swordSwingSounds,transform,0.15f);
     }
     private void OnAttackAnimationFinished()
     {
